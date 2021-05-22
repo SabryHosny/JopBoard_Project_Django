@@ -1,0 +1,32 @@
+jops:
+    - title
+    - location
+    - Job Nature: Full-time or Part-time
+    - description
+    - published at
+    - Vacancy : 2 Position
+    - Salary
+    - category
+    - experience
+    - qualifications
+    - gender
+
+    > Apply for the job
+    > Post a jop
+
+Blog:
+    - title
+    - description
+    - publish date
+    - category
+    - tags
+    - auther
+    
+    > search
+    > comment
+    > recent posts
+
+Contact from
+Home
+
+Log In

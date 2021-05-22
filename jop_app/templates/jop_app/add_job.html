@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Add Jop</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">   
+                    <div class="apply_job_form white-bg">
+                        <h4>Add Job</h4>
+                        {% comment %} ##################### Add form for the job ######################## {% endcomment %}
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form %} 
+                            {%buttons%}
+                                <button class="boxed-btn3 w-100" type="submit">Add Now</button>
+                            {%endbuttons%}
+                            {% comment %} <div class="submit_btn">
+                                <button class="boxed-btn3 w-100" type="submit">Add Now</button>
+                            </div>  {% endcomment %}
+                            {% comment %} {% csrf_token %} {% endcomment %}
+                            {% comment %} <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input_field">
+                                        <input type="text" name="name" maxlength="50" required="" id="id_name" placeholder="Your name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input_field">
+                                        <input type="email" name="email" maxlength="254" required="" id="id_email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input_field">
+                                        <input type="url" name="website" maxlength="200" required="" id="id_website" placeholder="Website/Portfolio link">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button type="button" id="inputGroupFileAddon03"><i
+                                                    class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" name="cv" class="custom-file-input" required="" id="id_cv" aria-describedby="inputGroupFileAddon03">    
+                                            <label class="custom-file-label" for="id_cv">Upload CV</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input_field">
+                                        <textarea name="cover_letter" cols="30" rows="10" maxlength="500" required="" id="id_cover_letter" placeholder="Coverletter"></textarea>    
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="submit_btn">
+                                        <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>  {% endcomment %}
+                        </form>
+                    </div>
+            
+            </div>
+        </div>
+    </div>
+
+ {% endblock body %}

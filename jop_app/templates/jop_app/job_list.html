@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{jobs.count}}+ Jobs Available</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <!-- job_listing_area_start  -->
+    <div class="job_listing_area plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="job_filter white-bg">
+                        <div class="form_inner white-bg">
+                            <h3>Filter</h3>
+                            <form method="GET">
+                                {% bootstrap_form job_filter.form %}
+                                    <input type='submit' class="boxed-btn3 w-100 mt-2" value='Search'>
+                            </form>
+                        </div>
+                        {% comment %} <div class="range_wrap">
+                            <label for="amount">Price range:</label>
+                            <div id="slider-range"></div>
+                            <p>
+                                <input type="text" id="amount" readonly
+                                    style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
+                            </p>
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="recent_joblist_wrap">
+                        <div class="recent_joblist white-bg ">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h4>Job Listing</h4>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job_lists m-0">
+                        <div class="row">
+                        {% comment %} ##################### START Jop List ##################### {% endcomment %}
+                        {% for job in jobs %}
+                         <div class="col-lg-12 col-md-12">
+                                <div class="single_jobs white-bg d-flex justify-content-between">
+                                    <div class="jobs_left d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="" alt="">
+                                        </div>
+                                        <div class="jobs_conetent">
+                                            {% comment %} ========== link to job_details =========== {% endcomment %}
+                                            <a href="{% url 'jobsssss:job_detailsssssss' job.slug %}">
+                                                <h4>{{job}}</h4>
+                                            </a>
+                                            <div class="links_locat d-flex align-items-center">
+                                                <div class="location">
+                                                    <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                                </div>
+                                                <div class="location">
+                                                    <p> <i class="fa fa-clock-o"></i> {{job.jop_type}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="jobs_right">
+                                        <div class="apply_now">
+                                            <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
+                                            {% comment %} ========== link to job_details =========== {% endcomment %}
+                                            <a href="{% url 'jobsssss:job_detailsssssss' job.slug %}" class="boxed-btn3">Apply Now</a>
+                                        </div>
+                                        <div class="date">
+                                            <p>Date line: {{job.published_at|date:"d M Y"}}</p>
+                                            {% comment %} {{ value|date:"D d M Y" }} {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% comment %} ##################### END Jop List ##################### {% endcomment %}
+                        {% comment %} ##################### START Pagination ##################### {% endcomment %}
+                        </div>
+                        {% if jobs.has_other_pages  %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="pagination_wrap">
+                                    <ul>
+                                        {% if jobs.has_previous %}
+                                        <li><a href="?page={{ jobs.previous_page_number }}"> <i class="ti-angle-left"></i> </a></li>
+                                        {% endif %}
+
+                                        {% for i in jobs.paginator.page_range %}
+                                        <li><a href="?page={{i}}"><span>{{i}}</span></a></li>
+                                        {% endfor %}
+
+                                        {% if jobs.has_next %}
+                                        <li><a href="?page={{ jobs.next_page_number }}"> <i class="ti-angle-right"></i> </a></li>
+                                        {% endif %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% comment %} ##################### END Pagination ##################### {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_listing_area_end  -->
+
+{% endblock body %}
+
+  
